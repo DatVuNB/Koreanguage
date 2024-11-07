@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "630555167753",
+    "firebase_url": "https://koreanguage-261f0-default-rtdb.firebaseio.com",
+    "project_id": "koreanguage-261f0",
+    "storage_bucket": "koreanguage-261f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630555167753:android:44b4d5d1028828d0ed3cd8",
+        "android_client_info": {
+          "package_name": "test.vtd.koreanguage"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDktKDfJ8FY29ARuVjn_liSO0ScbYFEU0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
