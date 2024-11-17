@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content"
+    android:weightSum="10">
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:text="Từ mới"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_margin="5dp"/>
+    <TextView
+        android:id="@+id/tv_mean"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:text="Nghĩa"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_margin="5dp"/>
+    <ImageView
+        android:id="@+id/img_update"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:src="@drawable/ic_fix"/>
+    <ImageView
+        android:id="@+id/img_delete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_delete"/>
+</LinearLayout>

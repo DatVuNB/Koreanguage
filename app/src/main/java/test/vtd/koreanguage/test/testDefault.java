@@ -26,11 +26,11 @@ public class testDefault extends AppCompatActivity {
 
     ActivityTestBinding binding;
     DatabaseReference databaseReference;
-    List<newWordObject> newWords;
+    List<newWord> newWords;
     int currentQuestionIndex = 0;
     String correctAnswer;
     int state = 0;
-    newWordObject currentWord;
+    newWord currentWord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,7 @@ public class testDefault extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                        newWordObject model = dataSnapshot.getValue(newWordObject.class);
+                        newWord model = dataSnapshot.getValue(newWord.class);
                         newWords.add(model);
                     }
 

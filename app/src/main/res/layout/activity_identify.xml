@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:background="@drawable/background_button"
+        android:background="@drawable/background_button_on"
         android:text="Take Picture"
         android:textAllCaps="false"
         android:textSize="21sp"
