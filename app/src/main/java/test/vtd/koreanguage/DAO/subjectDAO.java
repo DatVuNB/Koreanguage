@@ -1,4 +1,4 @@
-package test.vtd.koreanguage.test;
+package test.vtd.koreanguage.DAO;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -7,6 +7,8 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
+
+import test.vtd.koreanguage.model.subject;
 
 @Dao
 public interface subjectDAO {

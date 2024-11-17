@@ -1,4 +1,4 @@
-package test.vtd.koreanguage.movie;
+package test.vtd.koreanguage.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

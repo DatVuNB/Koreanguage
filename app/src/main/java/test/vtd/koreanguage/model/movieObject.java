@@ -1,4 +1,4 @@
-package test.vtd.koreanguage.movie;
+package test.vtd.koreanguage.model;
 
 public class movieObject {
     private String bannerUrl;

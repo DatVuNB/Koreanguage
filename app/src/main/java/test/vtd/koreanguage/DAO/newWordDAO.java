@@ -1,4 +1,4 @@
-package test.vtd.koreanguage.test;
+package test.vtd.koreanguage.DAO;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -7,6 +7,8 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
+
+import test.vtd.koreanguage.model.newWord;
 
 @Dao
 public interface newWordDAO {
@@ -19,11 +21,13 @@ public interface newWordDAO {
     @Query("SELECT * FROM newWord WHERE subject = :subject")
     List<newWord> getNewWordBySubject(String subject);
 
-    @Query("SELECT * FROM newWord WHERE newWord = :newWord")
-    List<newWord> checkNewWord(String newWord);
+    @Query("SELECT * FROM newWord WHERE mean = :mean")
+    List<newWord> checkNewWord(String mean);
 
     @Update
     void updateNewWord(newWord newWord);
+    @Query("UPDATE newWord SET subject = :newSubject WHERE subject = :oldSubject")
+    void updateNewWordBySubject(String oldSubject, String newSubject);
 
     @Delete
     void deleteNewWord(newWord newWord);

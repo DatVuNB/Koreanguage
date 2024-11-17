@@ -1,4 +1,4 @@
-package test.vtd.koreanguage.movie;
+package test.vtd.koreanguage.adapter;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +15,8 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import test.vtd.koreanguage.R;
+import test.vtd.koreanguage.model.movieObject;
+import test.vtd.koreanguage.activity.videoPlayerActivity;
 
 public class movieAdapter extends RecyclerView.Adapter<movieAdapter.ViewHolder> {
     private List<movieObject> movieList;

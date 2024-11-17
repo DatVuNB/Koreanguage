@@ -1,4 +1,4 @@
-package test.vtd.koreanguage;
+package test.vtd.koreanguage.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,10 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import test.vtd.koreanguage.identify.identify;
-import test.vtd.koreanguage.movie.movie;
-import test.vtd.koreanguage.test.testMain;
-import test.vtd.koreanguage.translate.translate;
+import test.vtd.koreanguage.R;
 
 public class MainActivity extends AppCompatActivity {
 

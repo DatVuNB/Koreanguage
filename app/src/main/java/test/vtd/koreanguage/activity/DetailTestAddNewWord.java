@@ -1,4 +1,4 @@
-package test.vtd.koreanguage.test;
+package test.vtd.koreanguage.activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +12,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -21,11 +20,14 @@ import java.util.List;
 import java.util.Objects;
 
 import test.vtd.koreanguage.R;
+import test.vtd.koreanguage.adapter.newWordAdapter;
+import test.vtd.koreanguage.database.roomDatabase;
 import test.vtd.koreanguage.databinding.ActivityDetailTestAddNewWordBinding;
+import test.vtd.koreanguage.model.newWord;
 import test.vtd.koreanguage.sharedPreference.sharedPreference;
 
 public class DetailTestAddNewWord extends AppCompatActivity {
-    private newWordAdapter newWordAdapter;
+    private test.vtd.koreanguage.adapter.newWordAdapter newWordAdapter;
     private List<newWord> mListNewWord;
     private sharedPreference sharedPreference;
     String subjectName;
@@ -255,12 +257,12 @@ public class DetailTestAddNewWord extends AppCompatActivity {
                 String Str_newWord = inputName.getText().toString().trim();
                 String Str_mean = inputMeaning.getText().toString().trim();
                 if (!Str_newWord.isEmpty() && !Str_mean.isEmpty()) {
-                    if(isNewWordExist(Str_newWord)){
+                    if(isNewWordExist(Str_mean)){
                         hideSoftKeyboard();
                         dialog.cancel();
                         Toast.makeText(DetailTestAddNewWord.this, "Từ này đã tồn tại!", Toast.LENGTH_SHORT).show();
                     }else{
-                        newWord newWord = new newWord(Str_newWord, Str_mean,null,subjectName);
+                        newWord.setMean(Str_mean);
                         roomDatabase.getInstance(getApplicationContext()).newWordDAO().updateNewWord(newWord);
                         Toast.makeText(DetailTestAddNewWord.this, "Thành công!", Toast.LENGTH_SHORT).show();
                         hideSoftKeyboard();

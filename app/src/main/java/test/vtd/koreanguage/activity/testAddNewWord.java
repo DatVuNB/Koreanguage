@@ -1,4 +1,4 @@
-package test.vtd.koreanguage.test;
+package test.vtd.koreanguage.activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,11 +20,14 @@ import java.util.List;
 import java.util.Objects;
 
 import test.vtd.koreanguage.R;
+import test.vtd.koreanguage.adapter.subjectAdapter;
+import test.vtd.koreanguage.database.roomDatabase;
+import test.vtd.koreanguage.model.subject;
 
 public class testAddNewWord extends AppCompatActivity {
     private Button btn_addSubject;
     private RecyclerView rcv_listSubject;
-    private subjectAdapter subjectAdapter;
+    private test.vtd.koreanguage.adapter.subjectAdapter subjectAdapter;
     private List<subject> mListSubject;
 
     @Override
@@ -169,7 +172,9 @@ public class testAddNewWord extends AppCompatActivity {
                         hideSoftKeyboard();
                         Toast.makeText(testAddNewWord.this, "Topic đã tồn tại!", Toast.LENGTH_SHORT).show();
                     }else{
+                        String oldSubject = subject.getSubjectName();
                         subject.setSubjectName(newTopicName);
+                        roomDatabase.getInstance(getApplicationContext()).newWordDAO().updateNewWordBySubject(oldSubject, subject.getSubjectName());
                         roomDatabase.getInstance(getApplicationContext()).subjectDAO().updateSubject(subject);
                         Toast.makeText(testAddNewWord.this, "Thành công!", Toast.LENGTH_SHORT).show();
                         hideSoftKeyboard();

@@ -1,4 +1,4 @@
-package test.vtd.koreanguage.translate;
+package test.vtd.koreanguage.activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -1,4 +1,4 @@
-package test.vtd.koreanguage.test;
+package test.vtd.koreanguage.model;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;

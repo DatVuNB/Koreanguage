@@ -23,13 +23,13 @@
         android:theme="@style/Theme.Koreanguage"
         tools:targetApi="31">
         <activity
-            android:name=".test.DetailTestAddNewWord"
+            android:name=".activity.DetailTestAddNewWord"
             android:exported="false" />
         <activity
-            android:name=".test.testAddNewWord"
+            android:name=".activity.testAddNewWord"
             android:exported="false" />
         <activity
-            android:name=".test.testMain"
+            android:name=".activity.testMain"
             android:exported="false" />
 
         <meta-data
@@ -37,23 +37,23 @@
             android:value="ocr" />
 
         <activity
-            android:name=".identify.identify"
+            android:name=".activity.identify"
             android:exported="false" />
         <activity
-            android:name=".movie.movie"
+            android:name=".activity.movie"
             android:exported="false" />
         <activity
-            android:name=".test.testDefault"
+            android:name=".activity.testDefault"
             android:exported="false" />
         <activity
-            android:name=".translate.translate"
+            android:name=".activity.translate"
             android:exported="false" />
         <activity
-            android:name=".Register"
+            android:name=".activity.Register"
             android:exported="false" />
-        <activity android:name=".movie.videoPlayerActivity" />
+        <activity android:name=".activity.videoPlayerActivity" />
         <activity
-            android:name=".Login"
+            android:name=".activity.Login"
             android:exported="true"
             android:theme="@style/SplashScreenTheme">
             <intent-filter>
@@ -63,7 +63,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true" />
     </application>
 

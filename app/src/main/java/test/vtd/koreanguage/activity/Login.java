@@ -1,4 +1,4 @@
-package test.vtd.koreanguage;
+package test.vtd.koreanguage.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +17,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import test.vtd.koreanguage.R;
 
 public class Login extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package test.vtd.koreanguage.test;
+package test.vtd.koreanguage.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import test.vtd.koreanguage.R;
+import test.vtd.koreanguage.model.subject;
 
 public class subjectAdapter extends RecyclerView.Adapter<subjectAdapter.subjectViewHolder>{
     private List<subject> mListSubject;

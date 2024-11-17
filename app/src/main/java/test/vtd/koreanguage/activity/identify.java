@@ -1,4 +1,4 @@
-package test.vtd.koreanguage.identify;
+package test.vtd.koreanguage.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.media.MediaPlayer;
 import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -25,13 +24,10 @@ import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 import test.vtd.koreanguage.R;
 import test.vtd.koreanguage.ml.ModelUnquant;
-import test.vtd.koreanguage.translate.translate;
 
 public class identify extends AppCompatActivity {
 

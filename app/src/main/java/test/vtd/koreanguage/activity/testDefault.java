@@ -1,4 +1,4 @@
-package test.vtd.koreanguage.test;
+package test.vtd.koreanguage.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Random;
 
 import test.vtd.koreanguage.databinding.ActivityTestBinding;
+import test.vtd.koreanguage.model.newWord;
 
 public class testDefault extends AppCompatActivity {
 

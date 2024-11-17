@@ -1,9 +1,8 @@
-package test.vtd.koreanguage.movie;
+package test.vtd.koreanguage.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -19,11 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import test.vtd.koreanguage.R;
+import test.vtd.koreanguage.adapter.movieAdapter;
+import test.vtd.koreanguage.model.movieObject;
 
 public class movie extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private RecyclerView recyclerView;
-    private test.vtd.koreanguage.movie.movieAdapter movieAdapter;
+    private test.vtd.koreanguage.adapter.movieAdapter movieAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
