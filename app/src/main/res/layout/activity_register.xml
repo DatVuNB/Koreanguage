@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context=".activity.Register">
+    tools:context=".Activity.RegisterActivity">
 
     <ImageView
         android:id="@+id/top_background"
@@ -35,10 +35,15 @@
         android:padding="5dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeWidth="1dp"
+        app:hintEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Email"
             android:id="@+id/email_dky"
+            android:textColor="@color/black"
             android:inputType="textEmailAddress"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -56,10 +61,15 @@
         android:padding="5dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeWidth="1dp"
+        app:hintEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Password"
             android:id="@+id/pass_dky"
+            android:textColor="@color/black"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:inputType="textPassword"
@@ -77,11 +87,16 @@
         android:padding="5dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeWidth="1dp"
+        app:hintEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Repassword"
             android:layout_marginLeft="10dp"
             android:id="@+id/repass_dky"
+            android:textColor="@color/black"
             android:layout_marginRight="10dp"
             android:inputType="textPassword"
             android:drawableLeft="@drawable/ic_key"

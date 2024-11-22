@@ -6,7 +6,7 @@
     android:padding="16dp"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".activity.testDefault">
+    tools:context=".Activity.TestDefaultActivity">
 
     <TextView
         android:id="@+id/tvQuestion"

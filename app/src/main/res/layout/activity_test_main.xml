@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:layout_height="match_parent"
     android:weightSum="2"
-    tools:context=".activity.testMain">
+    tools:context=".Activity.TestMainActivity">
 
     <ImageView
         android:id="@+id/img_defaultWord"

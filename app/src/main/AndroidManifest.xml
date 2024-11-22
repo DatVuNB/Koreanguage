@@ -23,13 +23,13 @@
         android:theme="@style/Theme.Koreanguage"
         tools:targetApi="31">
         <activity
-            android:name=".activity.DetailTestAddNewWord"
+            android:name=".Activity.DetailTestAddNewWordActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.testAddNewWord"
+            android:name=".Activity.TestAddNewWordActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.testMain"
+            android:name=".Activity.TestMainActivity"
             android:exported="false" />
 
         <meta-data
@@ -37,23 +37,23 @@
             android:value="ocr" />
 
         <activity
-            android:name=".activity.identify"
+            android:name=".Activity.IdentifyActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.movie"
+            android:name=".Activity.MovieActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.testDefault"
+            android:name=".Activity.TestDefaultActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.translate"
+            android:name=".Activity.TranslateActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.Register"
+            android:name=".Activity.RegisterActivity"
             android:exported="false" />
-        <activity android:name=".activity.videoPlayerActivity" />
+        <activity android:name=".Activity.VideoPlayerActivity" />
         <activity
-            android:name=".activity.Login"
+            android:name=".Activity.LoginActivity"
             android:exported="true"
             android:theme="@style/SplashScreenTheme">
             <intent-filter>
@@ -63,7 +63,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".Activity.MainActivity"
             android:exported="true" />
     </application>
 
