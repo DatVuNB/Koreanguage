@@ -5,7 +5,6 @@ import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 import java.util.List;
 import test.vtd.koreanguage.Model.NewWord;
 import test.vtd.koreanguage.Repository.DetailTestAddNewWordRepository;
@@ -13,7 +12,6 @@ import test.vtd.koreanguage.Repository.DetailTestAddNewWordRepository;
 public class DetailTestAddNewWordViewModel extends AndroidViewModel {
     private final DetailTestAddNewWordRepository repository;
     private final MutableLiveData<String> status = new MutableLiveData<>();
-    private LiveData<List<NewWord>> newWordBySubject = new MutableLiveData<>();
     private final MutableLiveData<Boolean> buttonState = new MutableLiveData<>();
 
     public DetailTestAddNewWordViewModel(Application application) {
@@ -36,8 +34,7 @@ public class DetailTestAddNewWordViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<NewWord>> getNewWordBySubject(String subject){
-        newWordBySubject = repository.getNewWordBySubject(subject);
-        return newWordBySubject;
+        return repository.getNewWordBySubject(subject);
     }
     public LiveData<String> getStatus(){return status;}
 
@@ -51,12 +48,8 @@ public class DetailTestAddNewWordViewModel extends AndroidViewModel {
     }
 
     public void updateNewWord(NewWord newWord){
-        if(!repository.isExisted(newWord.getNewWord(), newWord.getMean())){
-            repository.updateNewWord(newWord);
-            status.setValue("Success");
-        }else{
-            status.setValue("This new word is existed");
-        }
+        repository.updateNewWord(newWord);
+        status.setValue("Success");
     }
 
     public void deleteNewWord(NewWord newWord){

@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 public class NewWord {
     @PrimaryKey(autoGenerate = true)
     private int id;
+
     private String newWord, mean, partWord, subject;
 
     public NewWord() {

@@ -28,6 +28,9 @@ public interface NewWordDAO {
     @Query("UPDATE NewWord SET subject = :newSubject WHERE subject = :oldSubject")
     void updateNewWordBySubject(String oldSubject, String newSubject);
 
+    @Query("DELETE FROM NewWord WHERE subject = :subjectDelete")
+    void deleteWordsBySubject(String subjectDelete);
+
     @Delete
     void deleteNewWord(NewWord newWord);
 

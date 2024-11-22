@@ -43,7 +43,7 @@ public class DetailTestAddNewWordRepository {
     }
 
     public boolean isExisted(String newWord, String mean){
-        return newWordDAO.checkNewWord(newWord, mean) == null;
+        return !newWordDAO.checkNewWord(newWord, mean).isEmpty();
     }
 
     public NewWord getRandomWord(){

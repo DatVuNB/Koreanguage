@@ -7,8 +7,8 @@ public class SharedPreference {
     private static final String PREF_NAME = "button_state_pref";
     private static final String BUTTON_STATE_KEY = "is_button_pressed";
 
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
+    private final SharedPreferences sharedPreferences;
+    private final SharedPreferences.Editor editor;
 
     public SharedPreference(Context context) {
         sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);

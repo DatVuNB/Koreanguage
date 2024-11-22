@@ -9,12 +9,12 @@ import java.util.List;
 import test.vtd.koreanguage.Model.MovieObject;
 import test.vtd.koreanguage.Repository.MovieRepository;
 
-public class MoviewViewModel extends ViewModel {
+public class MovieViewModel extends ViewModel {
     private final MovieRepository movieRepository;
     private final MutableLiveData<List<MovieObject>> movies = new MutableLiveData<>();
     private final MutableLiveData<String> errorMessage = new MutableLiveData<>();
 
-    public MoviewViewModel() {
+    public MovieViewModel() {
         movieRepository = new MovieRepository();
     }
 

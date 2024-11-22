@@ -26,14 +26,16 @@ public class LoginRepository {
     public void setLoginStatusLiveData(String s){loginStatusLiveData.setValue(s);}
 
     public void login(String email, String password){
-        auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(task -> {
-                    if(task.isSuccessful()){
-                        userLiveData.setValue(auth.getCurrentUser());
-                        setLoginStatusLiveData("Login successful.");
-                    }else{
-                        setLoginStatusLiveData("Authentication failed.");
-                    }
-                });
+        new Thread(() -> {
+            auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                        if(task.isSuccessful()){
+                            userLiveData.setValue(auth.getCurrentUser());
+                            setLoginStatusLiveData("Login successful.");
+                        }else{
+                            setLoginStatusLiveData("Authentication failed.");
+                        }
+                    });
+        }).start();
     }
 }

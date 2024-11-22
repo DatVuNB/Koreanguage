@@ -4,16 +4,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.util.Objects;
-
 import test.vtd.koreanguage.Model.Subject;
 import test.vtd.koreanguage.Adapter.SubjectAdapter;
 import test.vtd.koreanguage.ViewModel.TestAddNewWordViewModel;
@@ -65,7 +59,7 @@ public class TestAddNewWordActivity extends AppCompatActivity {
 
     private void addSubject() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Enter subject!");
+        builder.setTitle("Enter subject");
 
         final EditText input = new EditText(this);
         builder.setView(input);
@@ -74,23 +68,13 @@ public class TestAddNewWordActivity extends AppCompatActivity {
             String topicName = input.getText().toString().trim();
             if (!topicName.isEmpty()) {
                 testAddNewWordViewModel.insertSubject(topicName);
-                hideSoftKeyboard();
             } else {
-                Toast.makeText(TestAddNewWordActivity.this, "Please enter subject!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TestAddNewWordActivity.this, "Please enter subject", Toast.LENGTH_SHORT).show();
             }
         });
 
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
         builder.show();
-    }
-
-    public void hideSoftKeyboard() {
-        try {
-            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-            inputMethodManager.hideSoftInputFromWindow(Objects.requireNonNull(getCurrentFocus()).getWindowToken(), 0);
-        } catch (NullPointerException ex) {
-            ex.printStackTrace();
-        }
     }
 
     private void clickOnSubject(Subject subject) {
@@ -101,11 +85,10 @@ public class TestAddNewWordActivity extends AppCompatActivity {
 
     private void clickDeleteSubject(Subject subject) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Are you sure you want to delete?");
+        builder.setTitle("Are you sure you want to delete");
 
         builder.setPositiveButton("Confirm", (dialog, which) -> {
             testAddNewWordViewModel.deleteSubject(subject);
-            hideSoftKeyboard();
             dialog.cancel();
         });
 
@@ -125,13 +108,12 @@ public class TestAddNewWordActivity extends AppCompatActivity {
         builder.setPositiveButton("Confirm", (dialog, which) -> {
             String newTopicName = input.getText().toString().trim();
             if (!newTopicName.isEmpty()) {
+                subject.setSubjectName(newTopicName);
                 testAddNewWordViewModel.updateSubject(subject, oldTopicName, newTopicName);
-
             } else {
-                Toast.makeText(TestAddNewWordActivity.this, "Please enter subject!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TestAddNewWordActivity.this, "Please enter subject", Toast.LENGTH_SHORT).show();
             }
         });
-
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
         builder.show();
     }

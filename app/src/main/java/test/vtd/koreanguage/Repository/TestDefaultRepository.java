@@ -22,37 +22,41 @@ public class TestDefaultRepository {
     }
 
     public void fetchNewWord(testDefaultCallBack callBack){
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<NewWord> newWordList = new ArrayList<>();
-                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    NewWord newWord = dataSnapshot.getValue(NewWord.class);
-                    if(newWord != null)
-                        newWordList.add(newWord);
+        new Thread(() -> {
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    List<NewWord> newWordList = new ArrayList<>();
+                    for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                        NewWord newWord = dataSnapshot.getValue(NewWord.class);
+                        if(newWord != null)
+                            newWordList.add(newWord);
+                    }
+                    callBack.onSuccess(newWordList);
                 }
-                callBack.onSuccess(newWordList);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                callBack.onFailure(error.getMessage());
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    callBack.onFailure(error.getMessage());
+                }
+            });
+        }).start();
     }
 
     public List<String> getIncorrectAnswers(List<NewWord> newWords, String correctAnswer) {
         List<String> incorrectAnswers = new ArrayList<>();
-        Random random = new Random();
+        new Thread(() -> {
+            Random random = new Random();
+            for (int i = 0; i < 3; i++) {
+                String incorrectAnswer;
+                do {
+                    int randomIndex = random.nextInt(newWords.size());
+                    incorrectAnswer = newWords.get(randomIndex).getMean();
+                } while (incorrectAnswers.contains(incorrectAnswer) || incorrectAnswer.equals(correctAnswer));
+                incorrectAnswers.add(incorrectAnswer);
+            }
 
-        for (int i = 0; i < 3; i++) {
-            String incorrectAnswer;
-            do {
-                int randomIndex = random.nextInt(newWords.size());
-                incorrectAnswer = newWords.get(randomIndex).getMean();
-            } while (incorrectAnswers.contains(incorrectAnswer) || incorrectAnswer.equals(correctAnswer));
-            incorrectAnswers.add(incorrectAnswer);
-        }
+        }).start();
         return incorrectAnswers;
     }
     public interface testDefaultCallBack{

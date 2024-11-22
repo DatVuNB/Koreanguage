@@ -37,10 +37,13 @@ public class TestAddNewWordRepository {
     }
 
     public void deleteSubject(Subject subject){
-        new Thread(() -> subjectDAO.deleteSubject(subject)).start();
+        new Thread(() -> {
+            subjectDAO.deleteSubject(subject);
+            newWordDAO.deleteWordsBySubject(subject.getSubjectName());
+        }).start();
     }
 
-    public boolean isExisting(String subjectName){
-        return subjectDAO.checkSubject(subjectName) != null;
+    public boolean isExisted(String subjectName){
+        return !subjectDAO.checkSubject(subjectName).isEmpty();
     }
 }

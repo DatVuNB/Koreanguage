@@ -28,11 +28,11 @@ public class RegisterActivity extends AppCompatActivity {
         registerViewModel.getRegisterStatusLiveData().observe(this, status -> {
             if(status != null){
                 Toast.makeText(getApplicationContext(), status, Toast.LENGTH_SHORT).show();
-            }
-            if(status.equals("Account created.")){
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+                if(status.equals("Account created.")){
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 

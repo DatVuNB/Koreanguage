@@ -23,8 +23,8 @@ public class TestDefaultActivity extends AppCompatActivity {
 
         testDefaultViewModel = new ViewModelProvider(this).get(TestDefaultViewModel.class);
 
-        observeViewModel();
         testDefaultViewModel.loadNewWords();
+        observeViewModel();
 
         binding.btnSubmit.setOnClickListener(view -> checkAnswer());
     }

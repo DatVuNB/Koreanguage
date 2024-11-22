@@ -1,5 +1,6 @@
 package test.vtd.koreanguage.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +20,13 @@ import test.vtd.koreanguage.Model.MovieObject;
 import test.vtd.koreanguage.Activity.VideoPlayerActivity;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
-    private List<MovieObject> movieList;
+    private final List<MovieObject> movieList;
 
     public MovieAdapter(List<MovieObject> movieList) {
         this.movieList = movieList;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void updateMovie(List<MovieObject> newMovieList){
         movieList.clear();
         movieList.addAll(newMovieList);
@@ -60,20 +62,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             bannerImageView = itemView.findViewById(R.id.bannerImageView);
             titleTextView = itemView.findViewById(R.id.titleTextView);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        MovieObject selectedMovie = movieList.get(position);
-                        String videoUrl = selectedMovie.getVideoUrl();
-                        playVideo(videoUrl);
-                    }
+            itemView.setOnClickListener(view -> {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    MovieObject selectedMovie = movieList.get(position);
+                    String videoUrl = selectedMovie.getVideoUrl();
+                    playVideo(videoUrl);
                 }
             });
         }
         private void playVideo(String videoUrl) {
-            // Đưa videoUrl vào Intent và chuyển đến màn hình phát video
             Intent intent = new Intent(itemView.getContext(), VideoPlayerActivity.class);
             intent.putExtra("videoUrl", videoUrl);
             itemView.getContext().startActivity(intent);

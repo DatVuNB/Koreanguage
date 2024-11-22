@@ -1,5 +1,6 @@
 package test.vtd.koreanguage.Adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,7 @@ import test.vtd.koreanguage.R;
 
 public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.subjectViewHolder>{
     private List<Subject> mListSubject;
-    private IClickItemSubject iClickItemSubject;
+    private final IClickItemSubject iClickItemSubject;
 
     public interface IClickItemSubject{
         void updateSubject(Subject subject);
@@ -27,6 +28,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.subjectV
         this.iClickItemSubject = iClickItemSubject;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setData(List<Subject> list){
         this.mListSubject = list;
         notifyDataSetChanged();
@@ -45,24 +47,9 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.subjectV
         if(subject == null)
             return;
         holder.tv_subjectName.setText(subject.getSubjectName());
-        holder.img_updateSubject.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iClickItemSubject.updateSubject(subject);
-            }
-        });
-        holder.img_deleteSubject.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iClickItemSubject.deleteSubject(subject);
-            }
-        });
-        holder.tv_subjectName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iClickItemSubject.onSubjectClick(subject);
-            }
-        });
+        holder.img_updateSubject.setOnClickListener(v -> iClickItemSubject.updateSubject(subject));
+        holder.img_deleteSubject.setOnClickListener(v -> iClickItemSubject.deleteSubject(subject));
+        holder.tv_subjectName.setOnClickListener(v -> iClickItemSubject.onSubjectClick(subject));
     }
 
     @Override
@@ -72,10 +59,10 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.subjectV
         return 0;
     }
 
-    public class subjectViewHolder extends RecyclerView.ViewHolder{
-        private TextView tv_subjectName;
-        private ImageView img_updateSubject;
-        private ImageView img_deleteSubject;
+    public static class subjectViewHolder extends RecyclerView.ViewHolder{
+        private final TextView tv_subjectName;
+        private final ImageView img_updateSubject;
+        private final ImageView img_deleteSubject;
         public subjectViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_subjectName = itemView.findViewById(R.id.tv_name);

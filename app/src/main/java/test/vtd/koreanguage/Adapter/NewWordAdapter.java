@@ -1,5 +1,6 @@
 package test.vtd.koreanguage.Adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import test.vtd.koreanguage.Model.NewWord;
 
 public class NewWordAdapter extends RecyclerView.Adapter<NewWordAdapter.newWordViewHolder>{
     private List<NewWord> mListNewWord;
-    private NewWordAdapter.IClickItemNewWord iClickItemNewWord;
+    private final NewWordAdapter.IClickItemNewWord iClickItemNewWord;
 
     public interface IClickItemNewWord{
         void updateNewWord(NewWord newWord);
@@ -27,6 +28,7 @@ public class NewWordAdapter extends RecyclerView.Adapter<NewWordAdapter.newWordV
         this.iClickItemNewWord = iClickItemNewWord;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setData(List<NewWord> list){
         this.mListNewWord = list;
         notifyDataSetChanged();
@@ -45,18 +47,8 @@ public class NewWordAdapter extends RecyclerView.Adapter<NewWordAdapter.newWordV
             return;
         holder.tv_newWordName.setText(newWord.getNewWord());
         holder.tv_newWordMean.setText(newWord.getMean());
-        holder.img_updatenewWord.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iClickItemNewWord.updateNewWord(newWord);
-            }
-        });
-        holder.img_deletenewWord.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iClickItemNewWord.deleteNewWord(newWord);
-            }
-        });
+        holder.img_updatenewWord.setOnClickListener(v -> iClickItemNewWord.updateNewWord(newWord));
+        holder.img_deletenewWord.setOnClickListener(v -> iClickItemNewWord.deleteNewWord(newWord));
     }
 
     @Override
@@ -66,11 +58,11 @@ public class NewWordAdapter extends RecyclerView.Adapter<NewWordAdapter.newWordV
         return 0;
     }
 
-    public class newWordViewHolder extends RecyclerView.ViewHolder {
-        private TextView tv_newWordName;
-        private TextView tv_newWordMean;
-        private ImageView img_updatenewWord;
-        private ImageView img_deletenewWord;
+    public static class newWordViewHolder extends RecyclerView.ViewHolder {
+        private final TextView tv_newWordName;
+        private final TextView tv_newWordMean;
+        private final ImageView img_updatenewWord;
+        private final ImageView img_deletenewWord;
         public newWordViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_newWordName = itemView.findViewById(R.id.tv_name);

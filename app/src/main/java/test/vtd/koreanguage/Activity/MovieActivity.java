@@ -8,12 +8,12 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import test.vtd.koreanguage.Adapter.MovieAdapter;
-import test.vtd.koreanguage.ViewModel.MoviewViewModel;
+import test.vtd.koreanguage.ViewModel.MovieViewModel;
 import test.vtd.koreanguage.databinding.ActivityMovieBinding;
 
 public class MovieActivity extends AppCompatActivity {
     ActivityMovieBinding binding;
-    private MoviewViewModel moviewViewModel;
+    private MovieViewModel moviewViewModel;
     private MovieAdapter movieAdapter;
 
     @Override
@@ -44,7 +44,7 @@ public class MovieActivity extends AppCompatActivity {
         binding.recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         movieAdapter = new MovieAdapter(new ArrayList<>());
         binding.recyclerView.setAdapter(movieAdapter);
-        moviewViewModel = new ViewModelProvider(this).get(MoviewViewModel.class);
+        moviewViewModel = new ViewModelProvider(this).get(MovieViewModel.class);
         moviewViewModel.fetchMovie();
     }
 }

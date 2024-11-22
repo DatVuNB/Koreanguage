@@ -28,7 +28,6 @@ public class TranslateActivity extends AppCompatActivity {
     ActivityTranslateBinding binding;
     String[] fromLanguages = {"From", "English", "Korean", "VietNamese"};
     String[] toLanguages = {"To", "English", "Korean", "VietNamese"};
-    String fromLanguage, toLanguage;
     private TranslateViewModel viewModel;
     private TextToSpeech textToSpeech;
     private ActivityResultLauncher<Intent> speechLauncher;
@@ -118,9 +117,7 @@ public class TranslateActivity extends AppCompatActivity {
             viewModel.translateText(sourceText, binding.tvTranslated::setText);
         });
 
-        binding.icMic.setOnClickListener(view -> {
-            viewModel.launchSpeechRecognizer(speechLauncher);
-        });
+        binding.icMic.setOnClickListener(view -> viewModel.launchSpeechRecognizer(speechLauncher));
 
         binding.icPic.setOnClickListener(view -> {
             if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {

@@ -37,19 +37,21 @@ public class TestDefaultViewModel extends ViewModel {
     }
 
     public void loadNewWords() {
-        testDefaultRepository.fetchNewWord(new TestDefaultRepository.testDefaultCallBack() {
-            @Override
-            public void onSuccess(List<NewWord> newWordList) {
-                newWords = newWordList;
-                Collections.shuffle(newWords);
-                randomState();
-            }
+        new Thread(() -> {
+            testDefaultRepository.fetchNewWord(new TestDefaultRepository.testDefaultCallBack() {
+                @Override
+                public void onSuccess(List<NewWord> newWordList) {
+                    newWords = newWordList;
+                    Collections.shuffle(newWords);
+                    randomState();
+                }
 
-            @Override
-            public void onFailure(String error) {
+                @Override
+                public void onFailure(String error) {
 
-            }
-        });
+                }
+            });
+        }).start();
     }
 
     private void randomState() {

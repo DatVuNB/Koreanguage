@@ -32,7 +32,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
         }
     }
 
-    // Hàm để trích xuất đường dẫn m3u8 từ URL
+    // ham trich xuat duong dan m3u8 tu URL
     private String extractM3u8Url(String videoUrl) {
         Uri uri = Uri.parse(videoUrl);
         String query = uri.getQuery();

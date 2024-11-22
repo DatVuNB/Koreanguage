@@ -1,14 +1,13 @@
 package test.vtd.koreanguage.Model;
 
-import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "subject")
+@Entity
 public class Subject {
     @PrimaryKey(autoGenerate = true)
-    @NonNull
     private int ID;
+
     private String subjectName;
 
     public Subject(String subjectName) {

@@ -19,7 +19,6 @@ import android.widget.Toast;
 import java.util.Locale;
 
 import test.vtd.koreanguage.ViewModel.IdentifyViewModel;
-import test.vtd.koreanguage.ViewModel.LoginViewModel;
 import test.vtd.koreanguage.databinding.ActivityIdentifyBinding;
 
 public class IdentifyActivity extends AppCompatActivity {

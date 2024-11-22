@@ -6,10 +6,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -17,7 +15,6 @@ import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 import test.vtd.koreanguage.Model.NewWord;
 import test.vtd.koreanguage.R;
@@ -54,7 +51,7 @@ public class DetailTestAddNewWordActivity extends AppCompatActivity {
         binding.btnKiemTra.setOnClickListener(v -> {
             if(!nowState){
                 viewModel.setButtonState(true);
-                kiemTra();
+                test();
             }else{
                 viewModel.setButtonState(false);
             }
@@ -79,6 +76,7 @@ public class DetailTestAddNewWordActivity extends AppCompatActivity {
         binding.rcvListNewWord.setAdapter(newWordAdapter);
     }
 
+    @SuppressLint("SetTextI18n")
     private void initViewModel() {
         viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()))
                 .get(DetailTestAddNewWordViewModel.class);
@@ -104,7 +102,7 @@ public class DetailTestAddNewWordActivity extends AppCompatActivity {
         viewModel.loadButtonState();
     }
 
-    private void kiemTra() {
+    private void test() {
         loadQuestion();
         binding.btnSubmit.setOnClickListener(v -> checkAnswerAndMoveToNext());
     }
@@ -174,22 +172,12 @@ public class DetailTestAddNewWordActivity extends AppCompatActivity {
         builder.show();
     }
 
-    public void hideSoftKeyboard() {
-        try {
-            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-            inputMethodManager.hideSoftInputFromWindow(Objects.requireNonNull(getCurrentFocus()).getWindowToken(), 0);
-        } catch (NullPointerException ex) {
-            ex.printStackTrace();
-        }
-    }
-
     private void clickDeleteNewWord(NewWord newWord) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Are you sure to delete?");
 
         builder.setPositiveButton("Confirm", (dialog, which) -> {
             viewModel.deleteNewWord(newWord);
-            hideSoftKeyboard();
             dialog.cancel();
         });
 
@@ -199,17 +187,17 @@ public class DetailTestAddNewWordActivity extends AppCompatActivity {
 
     private void clickUpdateNewWord(NewWord newWord) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Cập nhật từ mới");
+        builder.setTitle("Update new word");
 
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
 
         final EditText inputName = new EditText(this);
-        inputName.setHint("Từ mới");
+        inputName.setHint("New word");
         inputName.setText(newWord.getNewWord());
         layout.addView(inputName);
         final EditText inputMeaning = new EditText(this);
-        inputMeaning.setHint("Nghĩa");
+        inputMeaning.setHint("Mean");
         inputMeaning.setText(newWord.getMean());
         layout.addView(inputMeaning);
         builder.setView(layout);
@@ -218,6 +206,7 @@ public class DetailTestAddNewWordActivity extends AppCompatActivity {
             String Str_newWord = inputName.getText().toString().trim();
             String Str_mean = inputMeaning.getText().toString().trim();
             if (!Str_newWord.isEmpty() && !Str_mean.isEmpty()) {
+                newWord.setNewWord(Str_newWord);
                 newWord.setMean(Str_mean);
                 viewModel.updateNewWord(newWord);
             } else {
